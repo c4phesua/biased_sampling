@@ -13,6 +13,31 @@ This repository implements the Probabilistic Roadmap (PRM) algorithm and compare
 *   **Visualization:** `matplotlib` / `seaborn` (For plotting roadmaps and benchmark results)
 
 ---
+## 2. Pseudocode PRM (Probabilistic Roadmap with Biased Sampling)
+
+```
+1: V <- {q_start, q_goal}, E <- empty set
+2: while samples < N do
+3:     q_rand <- BiasedSampler(type) // Uniform, Gaussian, or Bridge-test
+4:     if q_rand is in C_free then
+5:         V <- V union {q_rand}
+6:         Neighbors <- KNearestNeighbors(q_rand, V, k)
+7:         for q_near in Neighbors do
+8:             if LocalPlanner(q_rand, q_near) is collision-free then
+9:                 E <- E union {(q_rand, q_near)}
+10:    if PathExists(q_start, q_goal, G(V, E)) then
+11:        return ShortestPath(G)
+12: return FAILURE
+
+```
+
+* **Invariants:** Every vertex $v \in V$ lies entirely in $\mathcal{C}_{free}$, and every edge $e \in E$ represents a continuous, collision-free local path in $\mathcal{C}_{free}$.
+
+* **Termination:** The algorithm terminates either when a connected path between $q_{start}$ and $q_{goal}$ is found, or when a predefined budget (maximum iterations $N$ or a time limit) is exhausted.
+
+* **Type of Guarantee:** The algorithm is **probabilistically complete**. As $N \to \infty$, the probability of finding a path, if one exists, approaches 1. However, to maintain this theoretical guarantee in practice, uniform samples must be mixed in with biased samples (Gaussian/Bridge-test) to ensure the entire free space is sufficiently covered and not just the obstacle boundaries. It is not asymptotically optimal unless modified to a PRM\* variant.
+
+
 
 ## 📋 Task Breakdown
 
