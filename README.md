@@ -13,7 +13,7 @@ This repository implements the Probabilistic Roadmap (PRM) algorithm and compare
 *   **Visualization:** `matplotlib` / `seaborn` (For plotting roadmaps and benchmark results)
 
 ---
-## 2. Pseudocode PRM (Probabilistic Roadmap with Biased Sampling)
+## Pseudocode PRM (Probabilistic Roadmap with Biased Sampling)
 
 ```
 1: V <- {q_start, q_goal}, E <- empty set
