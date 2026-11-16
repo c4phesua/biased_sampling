@@ -6,7 +6,7 @@ This project focuses on motion planning in continuous spaces, specifically addre
 This repository implements the Probabilistic Roadmap (PRM) algorithm and compares standard uniform sampling against heuristic biased samplers (Gaussian, Bridge test, Obstacle-based) and samplers learned from experience (CVAE, Ichter et al. 2018). The goal is to evaluate these approaches based on success rates, runtime efficiency, and the number of collision checks required to find a feasible path.
 
 ## 🛠 Tech Stack & Libraries
-*   **Language:** Python 3.11
+*   **Language:** Python 3.12
 *   **Collision Checking & Geometry:** `shapely` (Core infrastructure for map and obstacle definitions)
 *   **Graph Operations:** `networkx` (For pathfinding and connected components)
 *   **Data Structures:** `scipy.spatial` (KDTree for efficient nearest-neighbor searches)
