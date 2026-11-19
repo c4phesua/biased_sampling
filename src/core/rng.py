@@ -12,6 +12,9 @@ class RandomNumberGenerator:
     def uniform(self, low, high):
         return self._rng.uniform(low, high)
 
+    def uniform01(self):
+        return float(self._rng.random())
+
     def uniform_int(self, low, high):
         return int(self._rng.integers(low, high+1))
 
