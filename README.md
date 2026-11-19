@@ -50,20 +50,20 @@ This repository implements the Probabilistic Roadmap (PRM) algorithm and compare
 - [ ] Integrate a shortest-path algorithm (A* or Dijkstra) on the generated roadmap (can use `networkx`).
 
 ### 2. Sampler Implementations
-- [ ] **Baseline:** Implement `UniformSampler`.
-- [ ] **Heuristic 1:** Implement `GaussianSampler` (samples near obstacle boundaries).
-- [ ] **Heuristic 2:** Implement `BridgeTestSampler` (designed for narrow passages).
-- [ ] **Heuristic 3:** Implement `ObstacleBasedSampler` (OBPRM).
-- [ ] **Learned-based:** Implement `CVAESampler` (Conditional Variational Autoencoder, per Ichter et al. 2018).
+- [x] **Baseline:** Implement `UniformSampler`.
+- [x] **Heuristic 1:** Implement `GaussianSampler` (samples near obstacle boundaries).
+- [x] **Heuristic 2:** Implement `BridgeTestSampler` (designed for narrow passages).
+- [x] **Heuristic 3:** Implement `ObstacleBasedSampler` (OBPRM).
+- [x] **Learned-based:** Implement `CVAESampler` (Conditional Variational Autoencoder, per Ichter et al. 2018).
 
 ### 3. Metrics & Language-Independent Benchmarks
-- [ ] Inject internal counters into the PRM class: `num_collision_checks`.
-- [ ] Inject internal counters: `num_nodes_expanded`.
-- [ ] Measure runtime execution for distinct phases (Sampling, Edge Connection, Pathfinding).
+- [x] Inject internal counters into the PRM class: `num_collision_checks`.
+- [x] Inject internal counters: `num_nodes_expanded`.
+- [x] Measure runtime execution for distinct phases (Sampling, Edge Connection, Pathfinding).
 
 ### 4. Benchmarking & Visualization
 - [ ] Design custom 2D test maps featuring varying widths of narrow passages.
 - [ ] Write an automated benchmarking script: Execute 100+ runs per sampler across different maps to calculate the success rate.
-- [ ] Write a script to export benchmark results to CSV format.
+- [x] Write a script to export benchmark results to CSV format.
 - [ ] Write a visualization script (`matplotlib`/`seaborn`) to render the 2D map and the generated roadmaps.
-- [ ] Generate statistical plots comparing Uniform, Heuristic, and CVAE samplers based on runtime and collision checks.
+- [x] Generate statistical plots comparing Uniform, Heuristic, and CVAE samplers based on runtime and collision checks.
