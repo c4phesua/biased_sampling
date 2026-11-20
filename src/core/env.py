@@ -1,4 +1,5 @@
 from shapely.geometry import Point, Polygon, box
+from shapely.geometry import LineString
 
 
 class Environment2D:
@@ -27,9 +28,7 @@ class Environment2D:
         return True
 
     def is_edge_valid(self, p1, p2): # check if the line between p1 and p2 is valid (collision free) or not
-        from shapely.geometry import LineString
         line = LineString([p1, p2])
-
         for obs in self.obstacles:
             if line.intersects(obs):
                 return False
