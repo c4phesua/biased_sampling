@@ -14,7 +14,7 @@ class Environment2D:
         obstacle = Polygon(vertices)
         self.obstacles.append(obstacle)
 
-    def is_state_valid(self, x, y):
+    def is_state_valid(self, x, y):  # collision checker
         point = Point(x, y)
 
         if not self.boundary.contains(point):
@@ -26,7 +26,7 @@ class Environment2D:
 
         return True
 
-    def is_edge_valid(self, p1, p2):
+    def is_edge_valid(self, p1, p2): # check if the line between p1 and p2 is valid (collision free) or not
         from shapely.geometry import LineString
         line = LineString([p1, p2])
 
