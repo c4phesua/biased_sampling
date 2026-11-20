@@ -14,7 +14,7 @@ class PRM2D:
     def run(self, sample_num, k: int = 5):
         while len(self.graph.V) < sample_num + 2:
             q_rand = self.sampler()
-            if self.env.is_state_valid(self, q_rand[0], q_rand[1]):
+            if self.env.is_state_valid(q_rand[0], q_rand[1]):
                 self.graph.add_node(q_rand)
                 neighbors = self.graph.k_nn_search(q_rand, k=k)
                 for q_near in neighbors:
