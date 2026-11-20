@@ -45,9 +45,9 @@ This repository implements the Probabilistic Roadmap (PRM) algorithm and compare
 - [x] Set up the 2D environment and obstacle representation (using `Shapely`).
 - [x] Implement `CollisionChecker`: Verify if a configuration node is in the free space.
 - [x] Implement `LocalPlanner(c, n)`: Check for collisions along the straight line connecting two nodes.
-- [ ] Implement the neighbor search algorithm (K-Nearest Neighbors or Radius Search) to define `N_c`.
-- [ ] Implement the main PRM loop (manage Node/Edge sets and check `same_connected_component`).
-- [ ] Integrate a shortest-path algorithm (A* or Dijkstra) on the generated roadmap (can use `networkx`).
+- [x] Implement the neighbor search algorithm (K-Nearest Neighbors or Radius Search) to define `N_c`.
+- [x] Implement the main PRM loop (manage Node/Edge sets and check `same_connected_component`).
+- [x] Integrate a shortest-path algorithm (A* or Dijkstra) on the generated roadmap (can use `networkx`).
 
 ### 2. Sampler Implementations
 - [x] **Baseline:** Implement `UniformSampler`.
