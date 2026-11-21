@@ -8,7 +8,7 @@ from typing import Optional
 from .base import BaseValidStateSampler
 from .space_info import SpaceInformation
 from .uniform import UniformSampler
-from core.state import State
+from src.core.state import State
 
 
 class GaussianSampler(UniformSampler):
@@ -77,7 +77,7 @@ class GaussianValidStateSampler(BaseValidStateSampler):
             self.sampler.sample_uniform(state)
             valid1 = self.si.is_valid(state)
 
-            self.sampler.sample_gaussian(temp, state, self.std_dev)
+            self.sampler.sample_gaussian(temp, state, self.std)
             valid2 = self.si.is_valid(temp)
 
             if valid1 != valid2:

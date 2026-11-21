@@ -5,13 +5,13 @@ from __future__ import annotations
 from typing import Optional
 import numpy as np
 
-from core.state import State
-from core.state_space import BaseStateSpace
+from src.core.state import State
+from src.core.state_space import BaseStateSpace
 from .allocator import ValidStateSamplerAllocator
 
 
 class SpaceInformation:
-    def __init__(self, space: BaseStateSpace, check_validity_fn):
+    def __init__(self, space: BaseStateSpace, check_validity_fn, check_motion_fn=None):
         if space is None:
             raise ValueError("State space cannot be null.")
         
@@ -24,6 +24,10 @@ class SpaceInformation:
         self._valid_state_sampler_allocator = (
             ValidStateSamplerAllocator()
         )
+
+        if check_motion_fn is not None and not callable(check_motion_fn):
+            raise TypeError("Motion validity checker must be callable.")
+        self.check_motion_fn = check_motion_fn
 
     def set_valid_state_sampler_allocator(self, allocator):
         """
@@ -59,7 +63,7 @@ class SpaceInformation:
             return self._valid_state_sampler_allocator.allocate(self)
 
         # Lazy import to avoid circular dependencies.
-        from samplers.uniform import UniformValidStateSampler
+        from src.samplers.uniform import UniformValidStateSampler
 
         return UniformValidStateSampler(self)
 
@@ -96,6 +100,12 @@ class SpaceInformation:
 
         if resolution <= 0:
             raise ValueError("Resolution must be positive")
+
+        if self.check_motion_fn is not None:
+            if not self.check_motion_fn(state1, state2):
+                if last_valid_state is not None:
+                    last_valid_state.values[:] = state1.values
+                return False
 
         distance = self.space.distance(state1, state2)
         extent = self.get_maximum_extent()

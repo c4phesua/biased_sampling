@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from core.rng import RandomNumberGenerator
-from core.state import State
-from core.state_space import RealVectorStateSpace
+from src.core.rng import RandomNumberGenerator
+from src.core.state import State
+from src.core.state_space import RealVectorStateSpace
 from .space_info import SpaceInformation
 
 

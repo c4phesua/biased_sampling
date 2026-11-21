@@ -5,7 +5,7 @@ from __future__ import annotations
 from .base import BaseValidStateSampler
 from .space_info import SpaceInformation
 from .uniform import UniformSampler
-from core.state import State
+from src.core.state import State
 
 
 class ObstacleBasedSampler(UniformSampler):
