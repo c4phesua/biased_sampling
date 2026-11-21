@@ -84,7 +84,7 @@ class CVAEValidStateSampler(BaseValidStateSampler):
     def __init__(
         self,
         space_info: SpaceInformation,
-        cvae: Optional[CVAE],
+        cvae: Optional[CVAE] = None,
         condition = None,
         learned_fraction: float = 0.5,
         max_attempts: int = 100,

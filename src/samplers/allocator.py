@@ -41,7 +41,7 @@ class ValidStateSamplerAllocator:
 
         sampler = self._allocator(space_information)
 
-        from samplers.base import BaseValidStateSampler
+        from src.samplers.base import BaseValidStateSampler
 
         if not isinstance(sampler, BaseValidStateSampler):
             raise TypeError("Allocator must return a BaseValidStateSampler instance")
