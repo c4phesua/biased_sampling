@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from core.state import State
+from src.core.state import State
 from .base import BaseSampler, BaseValidStateSampler
 from .space_info import SpaceInformation
 

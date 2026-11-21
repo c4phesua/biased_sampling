@@ -10,10 +10,10 @@ import torch
 from .base import BaseValidStateSampler
 from .space_info import SpaceInformation
 from .uniform import UniformSampler
-from core.state import State
-from core.state_space import RealVectorStateSpace
-from core.rng import RandomNumberGenerator
-from models.cvae import CVAE
+from src.core.state import State
+from src.core.state_space import RealVectorStateSpace
+from src.core.rng import RandomNumberGenerator
+from src.models.cvae import CVAE
 
 
 class CVAESampler(UniformSampler):
