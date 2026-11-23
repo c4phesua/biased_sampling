@@ -1,10 +1,11 @@
+from typing import Optional
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.collections import LineCollection
 from matplotlib.patches import Polygon as MplPolygon
 
-from core import Environment2D, PRM2D, NodeGraph, State
-from samplers import GaussianValidStateSampler
+from core import Environment2D, State
 
 
 def visualize_prm(env, graph, q_start, q_goal, path=None, title="PRM Roadmap", save_path=None):
@@ -52,7 +53,7 @@ def visualize_prm(env, graph, q_start, q_goal, path=None, title="PRM Roadmap", s
     plt.close(fig)
 
 
-def create_single_passage_map(width: float, size: float = 10.0, passage_length: float = None):
+def create_single_passage_map(width: float, size: float = 10.0, passage_length: Optional[float] = None):
     env = Environment2D(0, size, 0, size)
     mid = 0.5 * size
     if passage_length is None:
@@ -126,7 +127,7 @@ def create_z_corridor_map(width: float, size: float = 10.0):
     ])
 
     q_start = np.array([0.1 * size, 0.1 * size])
-    q_goal = np.array[0.9 * size, 0.9 * size]
+    q_goal = np.array([0.9 * size, 0.9 * size])
     return env, State(q_start), State(q_goal)
 
 
@@ -210,13 +211,3 @@ def visualize_map(env, q_start=None, q_goal=None, title="2D Environment Map", sa
     else:
         plt.show()
     plt.close(fig)
-
-
-if __name__ == '__main__':
-    env, start, goal = create_bug_trap_map(width=2,size=20)
-    graph = NodeGraph()
-    sampler = GaussianValidStateSampler(space_info=env.create_space_information())
-    prm = PRM2D(env.create_space_information(), graph=graph, q_start=start, q_goal=goal)
-    path = prm.run(sample_num=1000, k=15)
-    print(path)
-    visualize_prm(env, graph, start, goal, path)
